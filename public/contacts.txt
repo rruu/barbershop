@@ -1,0 +1,8 @@
+
+Name: asd, date: 1988-12-12, phone:123, email:asdasd@asdasd.de, barber:Gus Fring
+Name: asd, date: 1988-12-12, phone:123, email:asdasd@asdasd.de, barber:Gus Fring
+Name: Семене, date: 2019-02-12, phone:779877, email:nu@xoto.ru, barber:Jessie Pincman
+Name: Семене, date: 2019-02-12, phone:779877, email:nu@xoto.ru, barber:Jessie Pincman
+Name: Кирилл, date: 2019-04-12, phone:777777, email:ru@zasda.de, barber:Gus Fring
+Name: Кирилл, date: 2019-04-12, phone:777777, email:ru@zasda.de, barber:Gus Fring
+Name: Сергей, date: 2019-04-02, phone:88888, email:asd@ya.ru, barber:Jessie Pincman
