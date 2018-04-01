@@ -1,19 +1,22 @@
-
-
-
 <h2><%=@h1%></h2>
+
+    <%if @complete_to then %>
+         <div class="alert alert-primary" role="alert"><%=@complete_to%></div>
+    <% end %>
 
 <form action='/visit' method="POST">
 
     <div class="row">
         <div class="col">
         <label for="exampleInputPassword1">Вашем Имя</label>
-        <input required type="text" class="form-control" placeholder="Иван" name="name">
+        <input required type="text" class="form-control" placeholder="Иван" name="name" oninvalid="this.setCustomValidity('Please Enter valid email')"
+ oninput="setCustomValidity('')" >
         </div>
 
         <div class="col">
                 <label for="exampleInputPassword1">Дата записи</label>
-                <input required class="form-control" type="date" name="date">
+                <input required class="form-control" type="date" name="date"  oninvalid="this.setCustomValidity('Please Enter valid email')"
+ oninput="setCustomValidity('')" >
                 <div class="input-group date">
             </div>
         </div>
@@ -22,11 +25,11 @@
     <div class="row">
         <div class="col">
         <label for="exampleInputPassword1">Ваш телефон</label>
-        <input required type="text" class="form-control" placeholder="+7 xxx xxx-xx-xx" name="phone">
+        <input required="" type="text" class="form-control" placeholder="+7 xxx xxx-xx-xx" name="phone"  oninvalid="this.setCustomValidity('Please Enter valid email')" oninput="setCustomValidity('')" >
         </div>
         <div class="col">
         <label for="exampleInputEmail1">Ваш e-mail</label>
-        <input required type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="вашеимя@maildomain.ru" name="email">
+        <input required type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="вашеимя@maildomain.ru" name="email"  oninvalid="this.setCustomValidity('Please Enter valid email')" oninput="setCustomValidity('')">
         <small id="emailHelp" class="form-text text-muted">Мы не передаем ваш e-mail третьим лицам</small>
         </div>
     </div>
@@ -46,9 +49,3 @@
 </div>
 
 </form>
-
-<br>
-
-    <%if @complete_to then %>
-         <div class="alert alert-primary" role="alert"><%=@complete_to%></div>
-    <% end %>

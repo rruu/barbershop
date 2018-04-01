@@ -27,18 +27,28 @@ get '/barbers' do
 end
 
 post '/visit' do
+
+
+
     @name = params[:name]
     @date = params[:date]
     @phone = params[:phone]
     @email = params[:email]
     @barber = params[:barber]
 
-    @complete_to = "Поздравляем #{@name}, вы записались к баребру #{@barber}!"
+    @complete_to = "Поздравляем #{@name}, вы записались к барберу #{@barber}!"
 
-    open('public/contacts.txt', 'a') do |f|
-        f << "\nName: #{@name}, date: #{@date}, phone:#{@phone}, email:#{@email}, barber:#{@barber}"
-        #erb :visitcomplete
-      end
+
+        open('public/contacts.txt', 'a') do |f|
+            #f << "\nName: #{@name}, date: #{@date}, phone:#{@phone}, email:#{@email}, barber:#{@barber}"
+            hh = {"Name"=> @name, "date"=> @date, "phone"=>@phone, "email"=>@email, "barber"=>@barber}
+            f << hh
+        end
 
       erb :visit
+
+      if @error != ''
+        return erb :visit
+      end
+
 end

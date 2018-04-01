@@ -55,9 +55,7 @@
 
 			<div>
 				<%if @error then %>
-						<div class="alert alert-primary" role="alert">
-                        Вы успешно записались!
-                        </div>
+						<div class="alert alert-error"><%=@error%></div>
 				<% end %>
 				<%= yield %>
 			</div>
