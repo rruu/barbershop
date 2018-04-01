@@ -17,6 +17,10 @@ Download and run barbershop:
 
 Then open [http://localhost:9292/](http://localhost:9292/)
 
-What's next?
-============
-- Nothing..
+
+Deploy to [Heroku](https://www.heroku.com/)
+
+===
+
+    heroku create               # Create app
+    git push heroku master      # Pull code to Heroku
