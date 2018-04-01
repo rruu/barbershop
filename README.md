@@ -13,9 +13,9 @@ Download and run barbershop:
 
     cd barbershop
     bundle install             # To install sinatra
-    rakeup    # To run the sample
+    rackup    # To run the sample
 
-Then open [http://localhost:4567/](http://localhost:4567/)
+Then open [http://localhost:9292/](http://localhost:9292/)
 
 What's next?
 ============
