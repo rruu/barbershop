@@ -2,6 +2,20 @@
 require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader'
+require 'sqlite3'
+
+configure do
+    @db = SQLite3::Database.new 'barbershop.db'
+    @db.execute 'CREATE TABLE IF NOT EXISTS "Users" (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name varchar NOT NULL,
+        phone varchar NOT NULL,
+        datestamp varchar NOT NULL,
+        barber varchar NOT NULL
+    );'
+end
+
+
 
 get '/' do
     @title = 'Барбершоп - Главная страница'
