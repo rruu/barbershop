@@ -6,7 +6,6 @@ Edu project "Barbershop"!
 
 Go!
 ===
-
 Download and run barbershop:
 
     git clone https://github.com/rruu/barbershop
@@ -17,10 +16,15 @@ Download and run barbershop:
 
 Then open [http://localhost:9292/](http://localhost:9292/)
 
-
 Deploy to [Heroku](https://www.heroku.com/)
 
+Heroku deploy
 ===
 
     heroku create               # Create app
     git push heroku master      # Pull code to Heroku
+
+TODO
+===
+
+    [ ] Fix heroku compatibility (migration sqlite3 => pg)
