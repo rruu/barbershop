@@ -15,17 +15,19 @@
 
         <div class="col">
                 <label for="exampleInputPassword1">Дата записи</label>
-                <input required class="form-control" type="date" name="date"  oninvalid="this.setCustomValidity('Please Enter valid email')"
- oninput="setCustomValidity('')" >
-                <div class="input-group date">
-            </div>
+                <!-- <input required class="form-control" type="date" name="date"  oninvalid="this.setCustomValidity('Please Enter valid email')" oninput="setCustomValidity('')" > -->
+                <input required class="form-control form_datetime" name="date" readonly oninvalid="this.setCustomValidity('Please Enter valid email')" oninput="setCustomValidity('')" >
+                <!-- <div class="input-group date"> -->
+            <%# </div> %>
         </div>
     </div>
 <br>
     <div class="row">
         <div class="col">
         <label for="exampleInputPassword1">Ваш телефон</label>
-        <input required="" type="text" class="form-control" placeholder="+7 xxx xxx-xx-xx" name="phone"  oninvalid="this.setCustomValidity('Please Enter valid email')" oninput="setCustomValidity('')" >
+        <!-- <input required="" type="text" class="form-control" placeholder="+7 xxx xxx-xx-xx" name="phone"  oninvalid="this.setCustomValidity('Please Enter valid email')" oninput="setCustomValidity('')" > -->
+        <input required="" name="phone" type="text" class="form-control input-medium bfh-phone" data-format="+7 (ddd) ddd-dddd" oninvalid="this.setCustomValidity('Please Enter valid email')" oninput="setCustomValidity('')" >
+        
         </div>
         <div class="col">
         <label for="exampleInputEmail1">Ваш e-mail</label>
@@ -49,3 +51,24 @@
 </div>
 
 </form>
+
+
+
+<script type="text/javascript">
+$(function() {
+  // тут я могу написать любой javascript код, который исполнится
+  // после загрузки страницы
+
+$(".form_datetime").datetimepicker({
+        
+        language:  'ru',
+        daysOfWeekDisabled: [5, 6],
+        format: "dd.mm.yyyy hh:ii",
+        autoclose: true,
+        todayBtn: true,
+        minuteStep: 30
+
+});
+});
+</script>
+

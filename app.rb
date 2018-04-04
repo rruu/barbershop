@@ -5,14 +5,22 @@ require 'sinatra/reloader'
 require 'sqlite3'
 
 configure do
-    @db = SQLite3::Database.new 'barbershop.db'
-    @db.execute 'CREATE TABLE IF NOT EXISTS "Users" (
+
+    #@db = SQLite3::Database.new 'barbershop.db'
+    #db = get_db
+    #db.results_as_hash = true
+
+    db = SQLite3::Database.new 'barbershop.db'
+
+    db.execute 'CREATE TABLE IF NOT EXISTS "Users" (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name varchar NOT NULL,
-        phone varchar NOT NULL,
         datestamp varchar NOT NULL,
+        phone varchar NOT NULL,
+        email varchar NOT NULL,
         barber varchar NOT NULL
     );'
+
 end
 
 
@@ -24,6 +32,7 @@ end
 get '/visit' do
     @title = 'Барбершоп - Записаться'
     @h1 = 'Запись на посещение'
+    @add_header = true
     erb :visit
 end
 
@@ -52,11 +61,13 @@ post '/visit' do
     @complete_to = "Поздравляем #{@name}, вы записались к барберу #{@barber}!"
 
 
-        open('public/contacts.txt', 'a') do |f|
-            #f << "\nName: #{@name}, date: #{@date}, phone:#{@phone}, email:#{@email}, barber:#{@barber}"
-            hh = {"Name"=> @name, "date"=> @date, "phone"=>@phone, "email"=>@email, "barber"=>@barber}
-            f << hh
-        end
+        # open('public/contacts.txt', 'a') do |f|
+        #     #f << "\nName: #{@name}, date: #{@date}, phone:#{@phone}, email:#{@email}, barber:#{@barber}"
+        #     hh = {"Name"=> @name, "date"=> @date, "phone"=>@phone, "email"=>@email, "barber"=>@barber}
+        #     f << hh
+        # end
+
+        db.execute 'insert into Users (name, datestamp, phone, email, barber) values (?,?,?,?,?)', [@name,@date,@phone,@email,@barber] 
 
       erb :visit
 
@@ -64,4 +75,8 @@ post '/visit' do
         return erb :visit
       end
 
+end
+
+def db
+    return SQLite3::Database.new 'barbershop.db'
 end
