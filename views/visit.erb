@@ -9,14 +9,13 @@
     <div class="row">
         <div class="col">
         <label for="exampleInputPassword1">Вашем Имя</label>
-        <input required type="text" class="form-control" placeholder="Иван" name="name" oninvalid="this.setCustomValidity('Please Enter valid email')"
- oninput="setCustomValidity('')" >
+        <input required type="text" class="form-control" name="name" oninvalid="this.setCustomValidity('Пожалуйста введите имя')" oninput="setCustomValidity('')" >
         </div>
 
         <div class="col">
                 <label for="exampleInputPassword1">Дата записи</label>
                 <!-- <input required class="form-control" type="date" name="date"  oninvalid="this.setCustomValidity('Please Enter valid email')" oninput="setCustomValidity('')" > -->
-                <input required class="form-control form_datetime" name="date" readonly oninvalid="this.setCustomValidity('Please Enter valid email')" oninput="setCustomValidity('')" >
+                <input required class="form-control form_datetime" name="date" readonly oninvalid="this.setCustomValidity('Укажите дату записи')" oninput="setCustomValidity('')" >
                 <!-- <div class="input-group date"> -->
             <%# </div> %>
         </div>
@@ -26,12 +25,12 @@
         <div class="col">
         <label for="exampleInputPassword1">Ваш телефон</label>
         <!-- <input required="" type="text" class="form-control" placeholder="+7 xxx xxx-xx-xx" name="phone"  oninvalid="this.setCustomValidity('Please Enter valid email')" oninput="setCustomValidity('')" > -->
-        <input required="" name="phone" type="text" class="form-control input-medium bfh-phone" data-format="+7 (ddd) ddd-dddd" oninvalid="this.setCustomValidity('Please Enter valid email')" oninput="setCustomValidity('')" >
+        <input required="" name="phone" type="text" class="form-control input-medium bfh-phone" data-format="+7 (ddd) ddd-dddd" oninvalid="this.setCustomValidity('Введите номер телефона')" oninput="setCustomValidity('')" >
         
         </div>
         <div class="col">
         <label for="exampleInputEmail1">Ваш e-mail</label>
-        <input required type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="вашеимя@maildomain.ru" name="email"  oninvalid="this.setCustomValidity('Please Enter valid email')" oninput="setCustomValidity('')">
+        <input required type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="вашеимя@maildomain.ru" name="email"  oninvalid="this.setCustomValidity('Введите email')" oninput="setCustomValidity('')">
         <small id="emailHelp" class="form-text text-muted">Мы не передаем ваш e-mail третьим лицам</small>
         </div>
     </div>
@@ -45,14 +44,11 @@
     </select>
   </div>
 
-
 <div class="mx-auto" style="width: 200px;">
     <button type="submit" class="btn btn-success">Записать меня</button>
 </div>
 
 </form>
-
-
 
 <script type="text/javascript">
 $(function() {
