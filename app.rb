@@ -4,14 +4,27 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'sqlite3'
 
+
+
+def is_barber_exists? db, name
+	db.execute('select * from Barbers where name=?', [name]).length > 0
+end
+
+def seed_db db, barbers
+
+	barbers.each do |barber|
+		if !is_barber_exists? db, barber
+			db.execute 'insert into Barbers (name) values (?)', [barber]
+		end 
+	end
+
+end
+
 def get_db
     db = SQLite3::Database.new 'barbershop.db'
     db.results_as_hash = true
     return db
 end
-
-
-def seed_db
 
 configure do
 
@@ -31,13 +44,15 @@ configure do
         name varchar NOT NULL
     );'
 
+    seed_db db, ['Jesse Pinkman', 'Walter White', 'Gustavo Fring', 'Mike Ehrmantraut', 'Skinny Pete']
+
 end
 
 
 def barbers db, name
     db = get_db
-    db.execute 'select * from Users order by id desc;'
-    return @barbers
+    db.execute 'select * from Barbers order by id desc;'
+    return barbers
 end
 
 get '/' do
@@ -49,7 +64,11 @@ get '/visit' do
     @title = 'Барбершоп - Записаться'
     @h1 = 'Запись на посещение'
     @datetimepicker = true
+    db = get_db
+    @barberdb =  db.execute 'select * from Barbers order by id desc'
     erb :visit
+
+    
 end
 
 get '/contacts' do
@@ -76,6 +95,8 @@ end
 
 post '/visit' do
 
+    @datetimepicker = true
+
     @name = params[:name]
     @date = params[:date]
     @phone = params[:phone]
@@ -94,7 +115,16 @@ post '/visit' do
         db = get_db
         db.execute 'insert into Users (name, datestamp, phone, email, barber) values (?,?,?,?,?)', [@name,@date,@phone,@email,@barber] 
 
+
+    db = get_db
+    @barberdb =  db.execute 'select * from Barbers order by id desc'
+
+
       erb :visit
+
+
+
+
 
       if @error != ''
         return erb :visit

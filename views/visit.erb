@@ -38,9 +38,17 @@
   <div class="form-group">
     <label for="exampleSelect1">Выберите барбера</label>
     <select class="form-control" name="barber">
-        <option>Walter White</option>
+
+
+       <!-- <option>Walter White</option>
         <option>Jessie Pincman</option>
-        <option>Gus Fring</option>
+        <option>Gus Fring</option> -->
+
+    <% @barberdb.each { |row|  %>  
+    <%= " <option>  #{row['name']} </option> "  %>
+    <% } %>
+
+
     </select>
   </div>
 
